@@ -13,17 +13,28 @@ public class Venue {
     this.venueCode = venueCode;
     this.capacity = capacity;
     this.hireFee = hireFee;
-    MessageCli.VENUE_SUCCESSFULLY_CREATED.printMessage(venueName, venueCode);
+    MessageCli.VENUE_SUCCESSFULLY_CREATED.printMessage(this.venueName, this.venueCode);
   }
 
 
   public String getVenueCode() {
-    return venueCode;
+    return this.venueCode;
   }
 
 
   public String getVenueName() {
-    return venueName;
+    return this.venueName;
+  }
+
+
+  public String getCapacity() {
+    
+    return Integer.toString(this.capacity);
+  }
+
+
+  public String getHireFee() {
+    return Double.toString(this.hireFee);
   }
 
 }

@@ -16,6 +16,20 @@ public class VenueHireSystem {
       MessageCli.NO_VENUES.printMessage();
       return;
     }
+
+    int numberOfVenues = venuesList.size();
+
+    if (numberOfVenues == 1) {
+      Venue venueInSystem = venuesList.get(0);
+      MessageCli.NUMBER_VENUES.printMessage("is", "one", "");
+      MessageCli.VENUE_ENTRY.printMessage(
+          venueInSystem.getVenueName(),
+          venueInSystem.getVenueCode(),
+          venueInSystem.getCapacity(),
+          venueInSystem.getHireFee());
+      return;
+    }
+
   }
 
   public void createVenue(
