@@ -16,7 +16,7 @@ import org.junit.runners.Suite.SuiteClasses;
   MainTest.Task1.class,
   // MainTest.Task2.class,
   // MainTest.Task3.class,
-  // MainTest.YourTests.class, // Uncomment this line to run your own tests
+  MainTest.YourTests.class, // Uncomment this line to run your own tests
 })
 public class MainTest {
 
@@ -709,9 +709,35 @@ public class MainTest {
     }
 
     @Test
-    public void T4_01_add_your_own_tests_as_needed() throws Exception {
-      runCommands(PRINT_VENUES);
-      assertContains("There are no venues in the system. Please create a venue first.");
+    public void three_venues_saved() throws Exception {
+      runCommands(
+          CREATE_VENUE,
+          "'Frugal Fiesta Hall'",
+          "FFH",
+          "80",
+          "250", //
+          CREATE_VENUE,
+          "'Comfy Corner Events Centre'",
+          "CCEC",
+          "120",
+          "500", //
+          CREATE_VENUE,
+          "'Cozy Comforts Venue'",
+          "CCV",
+          "200",
+          "500", //
+          PRINT_VENUES);
+
+      assertContains("There are three venues in the system:");
+      assertContains("Successfully created venue 'Frugal Fiesta Hall' (FFH).");
+      assertContains("Successfully created venue 'Comfy Corner Events Centre' (CCEC).");
+      assertContains("Successfully created venue 'Cozy Comforts Venue' (CCV).");
+      assertContains("Frugal Fiesta Hall (FFH) - 80 people - $250 base hire fee");
+      assertContains("Comfy Corner Events Centre (CCEC) - 120 people - $500 base hire fee");
+      assertContains("Cozy Comforts Venue (CCV) - 200 people - $500 base hire fee");
+
+      assertDoesNotContain("There is", true);
+      assertDoesNotContain("3 venues", true);
     }
   }
 
