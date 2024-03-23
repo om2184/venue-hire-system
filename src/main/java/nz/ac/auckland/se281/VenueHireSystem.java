@@ -13,7 +13,8 @@ public class VenueHireSystem {
 
   public void createVenue(
       String venueName, String venueCode, String capacityInput, String hireFeeInput) {
-    // TODO implement this method
+      // create a new venue object
+      Venue newVenue = new Venue(venueName, venueCode, Integer.parseInt(capacityInput), Double.parseDouble(hireFeeInput));
   }
 
   public void setSystemDate(String dateInput) {
