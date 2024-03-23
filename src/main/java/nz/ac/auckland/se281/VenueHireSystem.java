@@ -44,15 +44,37 @@ public class VenueHireSystem {
             return;
           }
         } else {
-          MessageCli.VENUE_NOT_CREATED_INVALID_NUMBER.printMessage("capacity", " whole number" );
+          MessageCli.VENUE_NOT_CREATED_INVALID_NUMBER.printMessage("capacity", " whole" );
           return;
         } 
       } catch (NumberFormatException e) {
-        MessageCli.VENUE_NOT_CREATED_INVALID_NUMBER.printMessage("capacity", " number" );
+        MessageCli.VENUE_NOT_CREATED_INVALID_NUMBER.printMessage("capacity", "");
         return;
       }
       
-  }
+      // Check if the hire fee is a valid number
+      try{
+        double hireFeeDoubled = Double.parseDouble(hireFeeInput);
+        int hireFee;
+        if (hireFeeDoubled == (int)hireFeeDoubled){
+          hireFee = (int) hireFeeDoubled;
+          if (hireFee <= 0) {
+            MessageCli.VENUE_NOT_CREATED_INVALID_NUMBER.printMessage("hire fee", " positive" );
+            return;
+          }
+        } else {
+          MessageCli.VENUE_NOT_CREATED_INVALID_NUMBER.printMessage("hire fee", " whole" );
+          return;
+        } 
+      } catch(NumberFormatException e) {
+        MessageCli.VENUE_NOT_CREATED_INVALID_NUMBER.printMessage("hire fee", "" );
+        return;
+      }
+     
+    
+    
+    
+    }
 
   public void setSystemDate(String dateInput) {
     // TODO implement this method
