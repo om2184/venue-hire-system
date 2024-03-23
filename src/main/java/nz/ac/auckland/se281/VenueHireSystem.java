@@ -22,6 +22,14 @@ public class VenueHireSystem {
       if (venueName.isEmpty()) {
           MessageCli.VENUE_NOT_CREATED_EMPTY_NAME.printMessage();
       }
+
+      // Check if the venue code does not exist in array already
+      for (Venue venue : venuesList) {
+          if (venue.getVenueCode().equals(venueCode)) {
+              MessageCli.VENUE_NOT_CREATED_CODE_EXISTS.printMessage();
+              return;
+          }
+      }
   }
 
   public void setSystemDate(String dateInput) {

@@ -17,5 +17,10 @@ public class Venue {
     
   }
 
+
+  public String getVenueCode() {
+    return venueCode;
+  }
+
 }
 
