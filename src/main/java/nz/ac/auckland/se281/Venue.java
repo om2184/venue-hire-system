@@ -22,5 +22,10 @@ public class Venue {
     return venueCode;
   }
 
+
+  public String getVenueName() {
+    return venueName;
+  }
+
 }
 
