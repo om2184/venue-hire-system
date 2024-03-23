@@ -787,6 +787,26 @@ public class MainTest {
       assertContains("Venue not created: hire fee must be a positive number.");
       assertDoesNotContain("Successfully created venue", true);
     }
+
+    @Test
+    public void T1_16_same_name_dif_code_venues() throws Exception {
+      runCommands(
+          CREATE_VENUE,
+          "'Frugal Fiesta Hall'",
+          "FFF",
+          "80",
+          "250", //
+          CREATE_VENUE,
+          "'Frugal Fiesta Hall'",
+          "fff",
+          "120",
+          "500", //
+          PRINT_VENUES);
+
+      assertContains("Successfully created venue 'Frugal Fiesta Hall' (FFF).");
+      assertContains("Successfully created venue 'Frugal Fiesta Hall' (fff).");
+      assertDoesNotContain("already used by", true);
+    }
   }
 
   private static final Object[] CREATE_NINE_VENUES =
