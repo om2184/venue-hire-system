@@ -1,7 +1,6 @@
 package nz.ac.auckland.se281;
 
 import java.util.ArrayList;
-
 import nz.ac.auckland.se281.Types.CateringType;
 import nz.ac.auckland.se281.Types.FloralType;
 
@@ -14,7 +13,7 @@ public class VenueHireSystem {
   }
 
   public void printVenues() {
-    
+
     // Check if there are no venues in the system
     if (venuesList.isEmpty()) {
       MessageCli.NO_VENUES.printMessage();
@@ -38,7 +37,7 @@ public class VenueHireSystem {
 
     if (numberOfVenues > 1 && numberOfVenues < 10) {
       String[] numbers = {"two", "three", "four", "five", "six", "seven", "eight", "nine"};
-      MessageCli.NUMBER_VENUES.printMessage("are", numbers[numberOfVenues - 2] , "s");
+      MessageCli.NUMBER_VENUES.printMessage("are", numbers[numberOfVenues - 2], "s");
       for (Venue venue : venuesList) {
         MessageCli.VENUE_ENTRY.printMessage(
             venue.getVenueName(),
@@ -48,9 +47,7 @@ public class VenueHireSystem {
             "TODO");
       }
       return;
-    }
-    // Check if there are more than one but less than 10 venues in the system
-    if (numberOfVenues >= 10) {
+    } else if (numberOfVenues >= 10) {
       MessageCli.NUMBER_VENUES.printMessage("are", Integer.toString(numberOfVenues), "s");
       for (Venue venue : venuesList) {
         MessageCli.VENUE_ENTRY.printMessage(
@@ -64,70 +61,65 @@ public class VenueHireSystem {
     }
   }
 
-
   public void createVenue(
       String venueName, String venueCode, String capacityInput, String hireFeeInput) {
-      
-      venueName = venueName.trim();
-      if (venueName.isEmpty()) {
-          MessageCli.VENUE_NOT_CREATED_EMPTY_NAME.printMessage();
-          return;
-      }
-      
-      
-      // Check if the venue code does not exist in array already
-      for (Venue venue : venuesList) {
-          if (venue.getVenueCode().equals(venueCode)) {
-              MessageCli.VENUE_NOT_CREATED_CODE_EXISTS.printMessage(venueCode, venue.getVenueName());
-              return;
-          }
-      }
 
-
-      // Check if the capacity is a valid number
-      int capacity;
-      try{
-        double capacityDoubled = Double.parseDouble(capacityInput);
-        if (capacityDoubled == (int)capacityDoubled){
-          capacity = (int) capacityDoubled;
-          if (capacity <= 0) {
-            MessageCli.VENUE_NOT_CREATED_INVALID_NUMBER.printMessage("capacity", " positive" );
-            return;
-          }
-        } else {
-          MessageCli.VENUE_NOT_CREATED_INVALID_NUMBER.printMessage("capacity", " whole" );
-          return;
-        } 
-      } catch (NumberFormatException e) {
-        MessageCli.VENUE_NOT_CREATED_INVALID_NUMBER.printMessage("capacity", "");
-        return;
-      }
-      
-      // Check if the hire fee is a valid number
-      int hireFee;
-      try{
-        double hireFeeDoubled = Double.parseDouble(hireFeeInput);
-        if (hireFeeDoubled == (int)hireFeeDoubled){
-          hireFee = (int) hireFeeDoubled;
-          if (hireFee <= 0) {
-            MessageCli.VENUE_NOT_CREATED_INVALID_NUMBER.printMessage("hire fee", " positive" );
-            return;
-          }
-        } else {
-          MessageCli.VENUE_NOT_CREATED_INVALID_NUMBER.printMessage("hire fee", " whole" );
-          return;
-        } 
-      } catch(NumberFormatException e) {
-        MessageCli.VENUE_NOT_CREATED_INVALID_NUMBER.printMessage("hire fee", "" );
-        return;
-      }
-     
-      // Create the venue and add it to the list of venues
-      Venue newVenue = new Venue(venueName, venueCode, capacity, hireFee);
-      venuesList.add(newVenue);
-    
-    
+    venueName = venueName.trim();
+    if (venueName.isEmpty()) {
+      MessageCli.VENUE_NOT_CREATED_EMPTY_NAME.printMessage();
+      return;
     }
+
+    // Check if the venue code does not exist in array already
+    for (Venue venue : venuesList) {
+      if (venue.getVenueCode().equals(venueCode)) {
+        MessageCli.VENUE_NOT_CREATED_CODE_EXISTS.printMessage(venueCode, venue.getVenueName());
+        return;
+      }
+    }
+
+    // Check if the capacity is a valid number
+    int capacity;
+    try {
+      double capacityDoubled = Double.parseDouble(capacityInput);
+      if (capacityDoubled == (int) capacityDoubled) {
+        capacity = (int) capacityDoubled;
+        if (capacity <= 0) {
+          MessageCli.VENUE_NOT_CREATED_INVALID_NUMBER.printMessage("capacity", " positive");
+          return;
+        }
+      } else {
+        MessageCli.VENUE_NOT_CREATED_INVALID_NUMBER.printMessage("capacity", " whole");
+        return;
+      }
+    } catch (NumberFormatException e) {
+      MessageCli.VENUE_NOT_CREATED_INVALID_NUMBER.printMessage("capacity", "");
+      return;
+    }
+
+    // Check if the hire fee is a valid number
+    int hireFee;
+    try {
+      double hireFeeDoubled = Double.parseDouble(hireFeeInput);
+      if (hireFeeDoubled == (int) hireFeeDoubled) {
+        hireFee = (int) hireFeeDoubled;
+        if (hireFee <= 0) {
+          MessageCli.VENUE_NOT_CREATED_INVALID_NUMBER.printMessage("hire fee", " positive");
+          return;
+        }
+      } else {
+        MessageCli.VENUE_NOT_CREATED_INVALID_NUMBER.printMessage("hire fee", " whole");
+        return;
+      }
+    } catch (NumberFormatException e) {
+      MessageCli.VENUE_NOT_CREATED_INVALID_NUMBER.printMessage("hire fee", "");
+      return;
+    }
+
+    // Create the venue and add it to the list of venues
+    Venue newVenue = new Venue(venueName, venueCode, capacity, hireFee);
+    venuesList.add(newVenue);
+  }
 
   public void setSystemDate(String dateInput) {
     // TODO implement this method
