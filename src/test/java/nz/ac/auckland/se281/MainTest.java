@@ -709,7 +709,7 @@ public class MainTest {
     }
 
     @Test
-    public void three_venues_saved() throws Exception {
+    public void T1_09_three_venues_saved() throws Exception {
       runCommands(
           CREATE_VENUE,
           "'Frugal Fiesta Hall'",
@@ -738,6 +738,30 @@ public class MainTest {
 
       assertDoesNotContain("There is", true);
       assertDoesNotContain("3 venues", true);
+    }
+
+    @Test
+    public void T1_10_invalid_capacity_zero() throws Exception {
+      runCommands(CREATE_VENUE, "'Frugal Fiesta Hall'", "FFH", "0", "150");
+
+      assertContains("Venue not created: capacity must be a positive number.");
+      assertDoesNotContain("Successfully created venue", true);
+    }
+
+    @Test
+    public void T1_11_invalid_capacity_whole_integer() throws Exception {
+      runCommands(CREATE_VENUE, "'Frugal Fiesta Hall'", "FFH", "10.6", "150");
+
+      assertContains("Venue not created: capacity must be a whole number.");
+      assertDoesNotContain("Successfully created venue", true);
+    }
+
+    @Test
+    public void T1_12_invalid_capacity_not_number() throws Exception {
+      runCommands(CREATE_VENUE, "'Frugal Fiesta Hall'", "FFH", "eighty", "50");
+
+      assertContains("Venue not created: capacity must be a number.");
+      assertDoesNotContain("Successfully created venue", true);
     }
   }
 
