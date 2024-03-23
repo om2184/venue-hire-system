@@ -5,10 +5,10 @@ public class Venue {
     private String venueName;
     private String venueCode;
     private int capacity;
-    private double hireFee;
+    private int hireFee;
 
 
-  public Venue(String venueName, String venueCode, int capacity, double hireFee) {
+  public Venue(String venueName, String venueCode, int capacity, int hireFee) {
     this.venueName = venueName;
     this.venueCode = venueCode;
     this.capacity = capacity;
@@ -34,7 +34,7 @@ public class Venue {
 
 
   public String getHireFee() {
-    return Double.toString(this.hireFee);
+    return Integer.toString(this.hireFee);
   }
 
 }

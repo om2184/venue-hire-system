@@ -32,6 +32,7 @@ public class VenueHireSystem {
 
   }
 
+
   public void createVenue(
       String venueName, String venueCode, String capacityInput, String hireFeeInput) {
       
@@ -49,8 +50,10 @@ public class VenueHireSystem {
               return;
           }
       }
-      int capacity;
+
+
       // Check if the capacity is a valid number
+      int capacity;
       try{
         double capacityDoubled = Double.parseDouble(capacityInput);
         if (capacityDoubled == (int)capacityDoubled){
