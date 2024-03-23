@@ -39,12 +39,16 @@ public class VenueHireSystem {
         int capacity;
         if (capacityDoubled == (int)capacityDoubled){
           capacity = (int) capacityDoubled;
+          if (capacity <= 0) {
+            MessageCli.VENUE_NOT_CREATED_INVALID_NUMBER.printMessage("capacity", " positive" );
+            return;
+          }
         } else {
-          MessageCli.VENUE_NOT_CREATED_INVALID_NUMBER.printMessage("capacity", "whole number" );
+          MessageCli.VENUE_NOT_CREATED_INVALID_NUMBER.printMessage("capacity", " whole number" );
           return;
         } 
       } catch (NumberFormatException e) {
-        MessageCli.VENUE_NOT_CREATED_INVALID_NUMBER.printMessage("capacity", "number" );
+        MessageCli.VENUE_NOT_CREATED_INVALID_NUMBER.printMessage("capacity", " number" );
         return;
       }
       
