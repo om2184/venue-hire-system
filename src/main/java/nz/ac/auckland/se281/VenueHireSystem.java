@@ -12,7 +12,10 @@ public class VenueHireSystem {
   public VenueHireSystem() {}
 
   public void printVenues() {
-    // TODO implement this method
+    if (venuesList.isEmpty()) {
+      MessageCli.NO_VENUES.printMessage();
+      return;
+    }
   }
 
   public void createVenue(
@@ -70,7 +73,9 @@ public class VenueHireSystem {
         return;
       }
      
-    Venue newVenue = new Venue(venueName, venueCode, capacity, hireFee);
+      // Create the venue and add it to the list of venues
+      Venue newVenue = new Venue(venueName, venueCode, capacity, hireFee);
+      venuesList.add(newVenue);
     
     
     }
