@@ -32,11 +32,10 @@ public class VenueHireSystem {
               return;
           }
       }
-
+      int capacity;
       // Check if the capacity is a valid number
       try{
         double capacityDoubled = Double.parseDouble(capacityInput);
-        int capacity;
         if (capacityDoubled == (int)capacityDoubled){
           capacity = (int) capacityDoubled;
           if (capacity <= 0) {
@@ -53,9 +52,9 @@ public class VenueHireSystem {
       }
       
       // Check if the hire fee is a valid number
+      int hireFee;
       try{
         double hireFeeDoubled = Double.parseDouble(hireFeeInput);
-        int hireFee;
         if (hireFeeDoubled == (int)hireFeeDoubled){
           hireFee = (int) hireFeeDoubled;
           if (hireFee <= 0) {
@@ -71,7 +70,7 @@ public class VenueHireSystem {
         return;
       }
      
-    
+    Venue newVenue = new Venue(venueName, venueCode, capacity, hireFee);
     
     
     }
