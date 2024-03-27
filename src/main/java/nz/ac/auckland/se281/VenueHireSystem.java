@@ -33,9 +33,7 @@ public class VenueHireSystem {
           venueInSystem.getHireFee(),
           "TODO");
       return;
-    }
-
-    if (numberOfVenues > 1 && numberOfVenues < 10) {
+    } else if (numberOfVenues < 10) { // Check if there are less than 10 venues in the system
       String[] numbers = {"two", "three", "four", "five", "six", "seven", "eight", "nine"};
       MessageCli.NUMBER_VENUES.printMessage("are", numbers[numberOfVenues - 2], "s");
       for (Venue venue : venuesList) {
@@ -47,7 +45,7 @@ public class VenueHireSystem {
             "TODO");
       }
       return;
-    } else if (numberOfVenues >= 10) {
+    } else if (numberOfVenues >= 10) { // Check if there are 10 or more venues in the system
       MessageCli.NUMBER_VENUES.printMessage("are", Integer.toString(numberOfVenues), "s");
       for (Venue venue : venuesList) {
         MessageCli.VENUE_ENTRY.printMessage(
