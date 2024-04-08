@@ -15,6 +15,6 @@ public class Booking {
     this.attendees = attendees;
     this.bookingReference = BookingReferenceGenerator.generateBookingReference();
     MessageCli.MAKE_BOOKING_SUCCESSFUL.printMessage(
-        this.bookingReference, this.email, this.date, this.attendees);
+        this.bookingReference, this.venueName, this.date, this.attendees);
   }
 }
