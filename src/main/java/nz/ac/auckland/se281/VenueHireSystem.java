@@ -147,10 +147,10 @@ public class VenueHireSystem {
     }
 
     // check if venue code exists
-    String venueToBook = null;
+    Venue venueToBook = null;
     for (Venue venue : venuesList) {
       if (venue.getVenueCode().equals(options[0])) {
-        venueToBook = venue.getVenueName();
+        venueToBook = venue;
         break;
       }
     }
@@ -180,12 +180,29 @@ public class VenueHireSystem {
     // check if venue is already booked
     for (Booking booking : bookingsList) {
       if (booking.getVenueCode().equals(options[0]) && booking.getDate().equals(options[1])) {
-        MessageCli.BOOKING_NOT_MADE_VENUE_ALREADY_BOOKED.printMessage(venueToBook, options[1]);
+        MessageCli.BOOKING_NOT_MADE_VENUE_ALREADY_BOOKED.printMessage(
+            venueToBook.getVenueName(), options[1]);
         return;
       }
     }
+
+    // Adjust number of attendees to be a valid number
+    int capacity = Integer.parseInt(venueToBook.getCapacity());
+    int attendees = Integer.parseInt(options[3]);
+    if (attendees > capacity) {
+      MessageCli.BOOKING_ATTENDEES_ADJUSTED.printMessage(
+          options[3], venueToBook.getCapacity(), venueToBook.getCapacity());
+      options[3] = venueToBook.getCapacity();
+    } else if (attendees < capacity / 4) {
+      String quarterCapacity = String.valueOf(capacity / 4);
+      MessageCli.BOOKING_ATTENDEES_ADJUSTED.printMessage(
+          options[3], quarterCapacity, venueToBook.getCapacity());
+      options[3] = quarterCapacity;
+    }
+
     // Create booking for venue
-    Booking newBooking = new Booking(venueToBook, options[0], options[1], options[2], options[3]);
+    Booking newBooking =
+        new Booking(venueToBook.getVenueName(), options[0], options[1], options[2], options[3]);
     bookingsList.add(newBooking);
   }
 
