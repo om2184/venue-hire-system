@@ -46,16 +46,40 @@ public class Venue {
     return nextAvailableDate;
   }
 
+  public ArrayList<String> getBookingsList() {
+    return bookingsList;
+  }
+
   public Booking makeBooking(String date, String email, String attendees) {
     // Create a Booking object
     Booking newBooking = new Booking(this.venueName, this.venueCode, date, email, attendees);
     this.bookingsList.add(date); // Add the booking date to the list of bookings
-    updateNextAvailableDate(); // Update the next available date
     return newBooking;
   }
 
-  private void updateNextAvailableDate() {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'updateNextAvailableDate'");
+  void updateNextAvailableDate(String systemDate) {
+    // If no bookings have been made, the next available date is the system date
+    if (this.bookingsList.isEmpty()) {
+      this.nextAvailableDate = systemDate;
+      return;
+    }
+
+    // Find the next available date
+    String[] systemDateParts = systemDate.split("/");
+    String[] bookingDateParts = this.bookingsList.get(this.bookingsList.size() - 1).split("/");
+    if (Integer.parseInt(systemDateParts[2]) > Integer.parseInt(bookingDateParts[2])) {
+      this.nextAvailableDate = systemDate;
+      return;
+    } else if (Integer.parseInt(systemDateParts[2]) == Integer.parseInt(bookingDateParts[2])) {
+      if (Integer.parseInt(systemDateParts[1]) > Integer.parseInt(bookingDateParts[1])) {
+        this.nextAvailableDate = systemDate;
+        return;
+      } else if (Integer.parseInt(systemDateParts[1]) == Integer.parseInt(bookingDateParts[1])) {
+        if (Integer.parseInt(systemDateParts[0]) > Integer.parseInt(bookingDateParts[0])) {
+          this.nextAvailableDate = systemDate;
+          return;
+        }
+      }
+    }
   }
 }

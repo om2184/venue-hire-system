@@ -203,6 +203,11 @@ public class VenueHireSystem {
     // Create booking for venue
     Booking newBooking = venueToBook.makeBooking(options[1], options[2], options[3]);
     bookingsList.add(newBooking);
+
+    // Update the next available date for each venue
+    for (Venue venue : venuesList) {
+      venue.updateNextAvailableDate(systemDate);
+    }
   }
 
   public void printBookings(String venueCode) {
