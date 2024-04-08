@@ -45,4 +45,17 @@ public class Venue {
   public String getNextAvailableDate() {
     return nextAvailableDate;
   }
+
+  public Booking makeBooking(String date, String email, String attendees) {
+    // Create a Booking object
+    Booking newBooking = new Booking(this.venueName, this.venueCode, date, email, attendees);
+    this.bookingsList.add(date); // Add the booking date to the list of bookings
+    updateNextAvailableDate(); // Update the next available date
+    return newBooking;
+  }
+
+  private void updateNextAvailableDate() {
+    // TODO Auto-generated method stub
+    throw new UnsupportedOperationException("Unimplemented method 'updateNextAvailableDate'");
+  }
 }

@@ -201,8 +201,7 @@ public class VenueHireSystem {
     }
 
     // Create booking for venue
-    Booking newBooking =
-        new Booking(venueToBook.getVenueName(), options[0], options[1], options[2], options[3]);
+    Booking newBooking = venueToBook.makeBooking(options[1], options[2], options[3]);
     bookingsList.add(newBooking);
   }
 
