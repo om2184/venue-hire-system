@@ -62,8 +62,7 @@ public class Venue {
   }
 
   public void updateNextAvailableDate() {
-    // If no bookings have been made, the next available date is the system date
-    // Check if the day after is available
+    // Get the next available date for this venue
     String[] dateParts = nextAvailableDate.split("/");
     int day = Integer.parseInt(dateParts[0]);
     int month = Integer.parseInt(dateParts[1]);
@@ -71,7 +70,7 @@ public class Venue {
 
     // Check if this day is in the booking list
     boolean foundDay = false;
-    while (foundDay = false) {
+    while (foundDay == false) {
       if (this.bookingsList.contains(String.format("%02d/%02d/%04d", day, month, year))) {
         day++;
         if (day > 31) {
