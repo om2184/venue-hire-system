@@ -162,13 +162,13 @@ public class VenueHireSystem {
 
     // check if venue is already booked
     for (Booking booking : bookingsList) {
-      if (booking.getVenueName().equals(venueToBook) && booking.getDate().equals(options[1])) {
+      if (booking.getVenueCode().equals(options[0]) && booking.getDate().equals(options[1])) {
         MessageCli.BOOKING_NOT_MADE_VENUE_ALREADY_BOOKED.printMessage(venueToBook, options[1]);
         return;
       }
     }
     // Create booking for venue
-    Booking newBooking = new Booking(venueToBook, options[1], options[2], options[3]);
+    Booking newBooking = new Booking(venueToBook, options[0], options[1], options[2], options[3]);
     bookingsList.add(newBooking);
   }
 

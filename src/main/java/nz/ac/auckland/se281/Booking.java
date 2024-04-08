@@ -3,13 +3,15 @@ package nz.ac.auckland.se281;
 public class Booking {
 
   private String venueName;
+  private String venueCode;
   private String date;
   private String email;
   private String attendees;
   private String bookingReference;
 
-  public Booking(String venueName, String date, String email, String attendees) {
+  public Booking(String venueName, String venueCode, String date, String email, String attendees) {
     this.venueName = venueName;
+    this.venueCode = venueCode;
     this.date = date;
     this.email = email;
     this.attendees = attendees;
@@ -20,6 +22,10 @@ public class Booking {
 
   public String getVenueName() {
     return venueName;
+  }
+
+  public String getVenueCode() {
+    return venueCode;
   }
 
   public String getDate() {
