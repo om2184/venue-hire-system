@@ -58,34 +58,33 @@ public class Venue {
   }
 
   public void updateNextAvailableDate(String systemDate) {
-    // If no bookings have been made, the next available date is the system date
-    if (this.bookingsList.isEmpty() || !this.bookingsList.contains(systemDate)) {
-      this.nextAvailableDate = systemDate;
-      return;
-    } else {
-      // Check if the day after is available
-      String[] dateParts = systemDate.split("/");
-      int day = Integer.parseInt(dateParts[0]);
-      int month = Integer.parseInt(dateParts[1]);
-      int year = Integer.parseInt(dateParts[2]);
+    this.nextAvailableDate = systemDate;
+  }
 
-      // Check if this day is in the booking list
-      boolean foundDay = false;
-      while (foundDay = false) {
-        if (this.bookingsList.contains(String.format("%02d/%02d/%04d", day, month, year))) {
-          day++;
-          if (day > 31) {
-            day = 1;
-            month++;
-            if (month > 12) {
-              month = 1;
-              year++;
-            }
+  public void updateNextAvailableDate() {
+    // If no bookings have been made, the next available date is the system date
+    // Check if the day after is available
+    String[] dateParts = nextAvailableDate.split("/");
+    int day = Integer.parseInt(dateParts[0]);
+    int month = Integer.parseInt(dateParts[1]);
+    int year = Integer.parseInt(dateParts[2]);
+
+    // Check if this day is in the booking list
+    boolean foundDay = false;
+    while (foundDay = false) {
+      if (this.bookingsList.contains(String.format("%02d/%02d/%04d", day, month, year))) {
+        day++;
+        if (day > 31) {
+          day = 1;
+          month++;
+          if (month > 12) {
+            month = 1;
+            year++;
           }
-        } else {
-          this.nextAvailableDate = String.format("%02d/%02d/%04d", day, month, year);
-          foundDay = true;
         }
+      } else {
+        this.nextAvailableDate = String.format("%02d/%02d/%04d", day, month, year);
+        foundDay = true;
       }
     }
   }

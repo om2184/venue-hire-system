@@ -126,6 +126,11 @@ public class VenueHireSystem {
   public void setSystemDate(String dateInput) {
     systemDate = dateInput;
     MessageCli.DATE_SET.printMessage(systemDate);
+
+    // Update the next available date for each venue
+    for (Venue venue : venuesList) {
+      venue.updateNextAvailableDate(systemDate);
+    }
   }
 
   public void printSystemDate() {
