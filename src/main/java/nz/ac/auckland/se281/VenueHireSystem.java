@@ -160,6 +160,24 @@ public class VenueHireSystem {
       return;
     }
 
+    // check if date is in the past
+    String systemDateParts[] = systemDate.split("/");
+    String bookingDateParts[] = options[1].split("/");
+    if (Integer.parseInt(systemDateParts[2]) > Integer.parseInt(bookingDateParts[2])) {
+      MessageCli.BOOKING_NOT_MADE_PAST_DATE.printMessage(options[1], systemDate);
+      return;
+    } else if (Integer.parseInt(systemDateParts[2]) == Integer.parseInt(bookingDateParts[2])) {
+      if (Integer.parseInt(systemDateParts[1]) > Integer.parseInt(bookingDateParts[1])) {
+        MessageCli.BOOKING_NOT_MADE_PAST_DATE.printMessage(options[1], systemDate);
+        return;
+      } else if (Integer.parseInt(systemDateParts[1]) == Integer.parseInt(bookingDateParts[1])) {
+        if (Integer.parseInt(systemDateParts[0]) > Integer.parseInt(bookingDateParts[0])) {
+          MessageCli.BOOKING_NOT_MADE_PAST_DATE.printMessage(options[1], systemDate);
+          return;
+        }
+      }
+    }
+
     // check if venue is already booked
     for (Booking booking : bookingsList) {
       if (booking.getVenueCode().equals(options[0]) && booking.getDate().equals(options[1])) {
