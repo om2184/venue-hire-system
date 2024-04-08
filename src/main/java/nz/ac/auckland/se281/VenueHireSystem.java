@@ -160,8 +160,8 @@ public class VenueHireSystem {
     }
 
     // check if date is in the past
-    String systemDateParts[] = systemDate.split("/");
-    String bookingDateParts[] = options[1].split("/");
+    String[] systemDateParts = systemDate.split("/");
+    String[] bookingDateParts = options[1].split("/");
     if (Integer.parseInt(systemDateParts[2]) > Integer.parseInt(bookingDateParts[2])) {
       MessageCli.BOOKING_NOT_MADE_PAST_DATE.printMessage(options[1], systemDate);
       return;
