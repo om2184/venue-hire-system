@@ -37,26 +37,29 @@ public class Venue {
     return Integer.toString(this.capacity);
   }
 
+  // Get the hire fee for this venue
   public String getHireFee() {
-    // Retruns the hire fee for this venue
     return Integer.toString(this.hireFee);
   }
 
+  // Get the next available date for this venue
   public String getNextAvailableDate() {
     return nextAvailableDate;
   }
 
+  // Get the bookings list for this venue
   public ArrayList<String> getBookingsList() {
     return bookingsList;
   }
 
+  // Make a booking for this venue
   public Booking makeBooking(String date, String email, String attendees) {
-    // Create a Booking object
     Booking newBooking = new Booking(this.venueName, this.venueCode, date, email, attendees);
     this.bookingsList.add(date); // Add the booking date to the list of bookings
     return newBooking;
   }
 
+  // Update the next available date for this venue
   public void updateNextAvailableDate(String systemDate) {
     this.nextAvailableDate = systemDate;
   }
