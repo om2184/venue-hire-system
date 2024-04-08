@@ -146,16 +146,20 @@ public class VenueHireSystem {
 
     // check if venue code exist
     String venueCode = options[0];
-    Boolean venueExist = false;
+    String venueToBook = null;
     for (Venue venue : venuesList) {
       if (venue.getVenueCode().equals(venueCode)) {
-        venueExist = true;
+        venueToBook = venue.getVenueName();
+        break;
       }
     }
-    if (!venueExist) {
+    if (venueToBook == null) {
       MessageCli.BOOKING_NOT_MADE_VENUE_NOT_FOUND.printMessage(venueCode);
       return;
     }
+
+    // Create booking for venue
+    Booking newBooking = new Booking(venueToBook, options[1], options[2], options[3]);
   }
 
   public void printBookings(String venueCode) {
