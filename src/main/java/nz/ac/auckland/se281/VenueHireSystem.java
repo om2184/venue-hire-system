@@ -7,10 +7,12 @@ import nz.ac.auckland.se281.Types.FloralType;
 public class VenueHireSystem {
 
   private ArrayList<Venue> venuesList;
+  private ArrayList<Booking> bookingsList;
   private String systemDate;
 
   public VenueHireSystem() {
     this.venuesList = new ArrayList<Venue>();
+    this.bookingsList = new ArrayList<Booking>();
   }
 
   public void printVenues() {
@@ -158,8 +160,16 @@ public class VenueHireSystem {
       return;
     }
 
+    // check if venue is already booked
+    for (Booking booking : bookingsList) {
+      if (booking.getVenueName().equals(venueToBook) && booking.getDate().equals(options[1])) {
+        MessageCli.BOOKING_NOT_MADE_VENUE_ALREADY_BOOKED.printMessage(venueToBook, options[1]);
+        return;
+      }
+    }
     // Create booking for venue
     Booking newBooking = new Booking(venueToBook, options[1], options[2], options[3]);
+    bookingsList.add(newBooking);
   }
 
   public void printBookings(String venueCode) {

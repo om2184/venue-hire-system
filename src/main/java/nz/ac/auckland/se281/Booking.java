@@ -17,4 +17,24 @@ public class Booking {
     MessageCli.MAKE_BOOKING_SUCCESSFUL.printMessage(
         this.bookingReference, this.venueName, this.date, this.attendees);
   }
+
+  public String getVenueName() {
+    return venueName;
+  }
+
+  public String getDate() {
+    return date;
+  }
+
+  public String getEmail() {
+    return email;
+  }
+
+  public String getAttendees() {
+    return attendees;
+  }
+
+  public String getBookingReference() {
+    return bookingReference;
+  }
 }
