@@ -247,15 +247,49 @@ public class VenueHireSystem {
   }
 
   public void addCateringService(String bookingReference, CateringType cateringType) {
-    // TODO implement this method
+    // check if booking reference exists
+    Booking bookingToAddCatering = null;
+
+    for (Booking booking : bookingsList) {
+      if (booking.getBookingReference().equals(bookingReference)) {
+        bookingToAddCatering = booking;
+        break;
+      }
+    }
+    if (bookingToAddCatering == null) {
+      MessageCli.SERVICE_NOT_ADDED_BOOKING_NOT_FOUND.printMessage("Catering", bookingReference);
+      return;
+    }
   }
 
   public void addServiceMusic(String bookingReference) {
-    // TODO implement this method
+    Booking bookingToAddMusic = null;
+
+    for (Booking booking : bookingsList) {
+      if (booking.getBookingReference().equals(bookingReference)) {
+        bookingToAddMusic = booking;
+        break;
+      }
+    }
+    if (bookingToAddMusic == null) {
+      MessageCli.SERVICE_NOT_ADDED_BOOKING_NOT_FOUND.printMessage("Music", bookingReference);
+      return;
+    }
   }
 
   public void addServiceFloral(String bookingReference, FloralType floralType) {
-    // TODO implement this method
+    Booking bookingToAddFloral = null;
+
+    for (Booking booking : bookingsList) {
+      if (booking.getBookingReference().equals(bookingReference)) {
+        bookingToAddFloral = booking;
+        break;
+      }
+    }
+    if (bookingToAddFloral == null) {
+      MessageCli.SERVICE_NOT_ADDED_BOOKING_NOT_FOUND.printMessage("Floral", bookingReference);
+      return;
+    }
   }
 
   public void viewInvoice(String bookingReference) {
