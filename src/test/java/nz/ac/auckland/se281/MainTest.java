@@ -16,7 +16,7 @@ import org.junit.runners.Suite.SuiteClasses;
   MainTest.Task1.class,
   MainTest.Task2.class,
   // MainTest.Task3.class,
-  // MainTest.YourTests.class, // Uncomment this line to run your own tests
+  MainTest.YourTests.class, // Uncomment this line to run your own tests
 })
 public class MainTest {
 
@@ -701,6 +701,35 @@ public class MainTest {
 
     public YourTests() {
       super(Main.class);
+    }
+
+    @Test
+    public void TY_01_make_booking_too_many_attendees() throws Exception {
+      runCommands(
+          unpack(
+              CREATE_TEN_VENUES,
+              SET_DATE,
+              "26/02/2024", //
+              MAKE_BOOKING,
+              options("GGG", "28/05/2024", "client999@email.com", "300")));
+
+      assertContains("Number of attendees adjusted from 300 to 260, as the venue capacity is 260.");
+      assertContains("Successfully created booking 'HUD14D8O'");
+      assertDoesNotContain("Booking not made", true);
+    }
+
+    @Test
+    public void TY_01_make_booking_date_in_past() throws Exception {
+      runCommands(
+          unpack(
+              CREATE_TEN_VENUES,
+              SET_DATE,
+              "26/02/2024", //
+              MAKE_BOOKING,
+              options("GGG", "28/01/2024", "client999@email.com", "100")));
+
+      assertContains("Booking not made: '28/01/2024' is in the past (system date is 26/02/2024).");
+      assertDoesNotContain("Successfully created booking", true);
     }
 
     @Override
