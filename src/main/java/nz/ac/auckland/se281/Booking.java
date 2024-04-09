@@ -6,6 +6,7 @@ public class Booking {
 
   private String venueName;
   private String venueCode;
+  private String dateOfBooking;
   private String date;
   private String email;
   private String attendees;
@@ -49,5 +50,9 @@ public class Booking {
 
   public void addService(Service service) {
     services.add(service);
+  }
+
+  public ArrayList<Service> getServices() {
+    return services;
   }
 }

@@ -314,5 +314,38 @@ public class VenueHireSystem {
       MessageCli.VIEW_INVOICE_BOOKING_NOT_FOUND.printMessage(bookingReference);
       return;
     }
+
+    // print invoice
+    MessageCli.INVOICE_CONTENT_TOP_HALF.printMessage(
+        bookingToViewInvoice.getBookingReference(),
+        bookingToViewInvoice.getEmail(),
+        bookingToViewInvoice.getDate(),
+        bookingToViewInvoice.getDate(),
+        bookingToViewInvoice.getAttendees(),
+        bookingToViewInvoice.getVenueName());
+
+    // MessageCli.INVOICE_CONTENT_VENUE_FEE.printMessage(bookingToViewInvoice.getVenueFee());
+
+    ArrayList<Service> services = bookingToViewInvoice.getServices();
+    for (Service service : services) {
+      if (service instanceof CateringService) {
+        CateringService cateringService = (CateringService) service;
+        int cateringCost =
+            cateringService.calculateCost(Integer.parseInt(bookingToViewInvoice.getAttendees()));
+        MessageCli.INVOICE_CONTENT_CATERING_ENTRY.printMessage(
+            cateringService.getServiceName(), Integer.toString(cateringCost));
+      } else if (service instanceof MusicService) {
+        MusicService musicService = (MusicService) service;
+        int musicCost =
+            musicService.calculateCost(Integer.parseInt(bookingToViewInvoice.getAttendees()));
+        MessageCli.INVOICE_CONTENT_MUSIC_ENTRY.printMessage(Integer.toString(musicCost));
+      } else if (service instanceof FloralService) {
+        FloralService floralService = (FloralService) service;
+        int floralCost =
+            floralService.calculateCost(Integer.parseInt(bookingToViewInvoice.getAttendees()));
+        MessageCli.INVOICE_CONTENT_FLORAL_ENTRY.printMessage(
+            floralService.getServiceName(), Integer.toString(floralCost));
+      }
+    }
   }
 }
