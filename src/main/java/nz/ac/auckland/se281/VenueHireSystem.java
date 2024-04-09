@@ -184,7 +184,8 @@ public class VenueHireSystem {
 
     // check if venue is already booked
     for (Booking booking : bookingsList) {
-      if (booking.getVenueCode().equals(options[0]) && booking.getPartyDate().equals(options[1])) {
+      if (booking.getVenueCode().equals(options[0])
+          && booking.getDateBookedFor().equals(options[1])) {
         MessageCli.BOOKING_NOT_MADE_VENUE_ALREADY_BOOKED.printMessage(
             venueToBook.getVenueName(), options[1]);
         return;
@@ -237,7 +238,7 @@ public class VenueHireSystem {
     for (Booking booking : bookingsList) {
       if (booking.getVenueCode().equals(venueCode)) {
         MessageCli.PRINT_BOOKINGS_ENTRY.printMessage(
-            booking.getBookingReference(), booking.getPartyDate());
+            booking.getBookingReference(), booking.getDateBookedFor());
         hasBookings = true;
       }
     }
@@ -320,7 +321,7 @@ public class VenueHireSystem {
         bookingToViewInvoice.getBookingReference(),
         bookingToViewInvoice.getEmail(),
         bookingToViewInvoice.getDateOfBooking(),
-        bookingToViewInvoice.getPartyDate(),
+        bookingToViewInvoice.getDateBookedFor(),
         bookingToViewInvoice.getAttendees(),
         bookingToViewInvoice.getVenueName());
 

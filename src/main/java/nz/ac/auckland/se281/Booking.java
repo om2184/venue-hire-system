@@ -7,7 +7,7 @@ public class Booking {
   private String venueName;
   private String venueCode;
   private String dateOfBooking;
-  private String partyDate;
+  private String dateBookedFor;
   private String email;
   private String attendees;
   private String bookingReference;
@@ -16,19 +16,21 @@ public class Booking {
   public Booking(
       String venueName,
       String venueCode,
-      String date,
+      String dateBookedFor,
       String email,
       String attendees,
       String dateOfBooking) {
     this.venueName = venueName;
     this.venueCode = venueCode;
-    this.dateOfBooking = dateOfBooking;
-    this.partyDate = date;
+    this.dateOfBooking = dateOfBooking; // Date of booking is the current system date
+    this.dateBookedFor = dateBookedFor; // Date the booking is made for
     this.email = email;
     this.attendees = attendees;
     this.bookingReference = BookingReferenceGenerator.generateBookingReference();
+
+    // Print the booking confirmation message
     MessageCli.MAKE_BOOKING_SUCCESSFUL.printMessage(
-        this.bookingReference, this.venueName, this.partyDate, this.attendees);
+        this.bookingReference, this.venueName, this.dateBookedFor, this.attendees);
   }
 
   public String getVenueName() {
@@ -43,8 +45,8 @@ public class Booking {
     return dateOfBooking;
   }
 
-  public String getPartyDate() {
-    return partyDate;
+  public String getDateBookedFor() {
+    return dateBookedFor;
   }
 
   public String getEmail() {

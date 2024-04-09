@@ -23,31 +23,25 @@ public class Venue {
   }
 
   public String getVenueCode() {
-    // Retruns the venue code for this venue
     return this.venueCode;
   }
 
   public String getVenueName() {
-    // Retruns the venue name for this venue
     return this.venueName;
   }
 
   public String getCapacity() {
-    // Retruns the capacity for this venue
     return Integer.toString(this.capacity);
   }
 
-  // Get the hire fee for this venue
   public String getHireFee() {
     return Integer.toString(this.hireFee);
   }
 
-  // Get the next available date for this venue
   public String getNextAvailableDate() {
     return nextAvailableDate;
   }
 
-  // Get the bookings list for this venue
   public ArrayList<String> getBookingsList() {
     return bookingsList;
   }
@@ -70,6 +64,7 @@ public class Venue {
     // Check if this day is in the booking list
     boolean foundDay = false;
     while (foundDay == false) {
+      // If day is in the booking list, increment the day
       if (this.bookingsList.contains(String.format("%02d/%02d/%04d", day, month, year))) {
         day++;
         if (day > 31) {
@@ -80,7 +75,7 @@ public class Venue {
             year++;
           }
         }
-      } else {
+      } else { // If day is not in the booking list, set it to the next available date
         this.nextAvailableDate = String.format("%02d/%02d/%04d", day, month, year);
         foundDay = true;
       }
