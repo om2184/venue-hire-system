@@ -66,4 +66,13 @@ public class Booking {
   public ArrayList<Service> getServices() {
     return services;
   }
+
+  public int getServicesCost() {
+    // Calculate the total cost of all services
+    int totalCost = 0;
+    for (Service service : services) {
+      totalCost += service.calculateCost(Integer.parseInt(attendees));
+    }
+    return totalCost;
+  }
 }

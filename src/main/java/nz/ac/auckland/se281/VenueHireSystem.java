@@ -324,7 +324,17 @@ public class VenueHireSystem {
         bookingToViewInvoice.getAttendees(),
         bookingToViewInvoice.getVenueName());
 
-    // MessageCli.INVOICE_CONTENT_VENUE_FEE.printMessage(bookingToViewInvoice.getVenueFee());
+    // find which venue the booking is for
+    Venue venueForBooking = null;
+    for (Venue venue : venuesList) {
+      if (venue.getVenueCode().equals(bookingToViewInvoice.getVenueCode())) {
+        venueForBooking = venue;
+        break;
+      }
+    }
+
+    // print venue fee
+    MessageCli.INVOICE_CONTENT_VENUE_FEE.printMessage(venueForBooking.getHireFee());
 
     ArrayList<Service> services = bookingToViewInvoice.getServices();
     for (Service service : services) {
@@ -347,5 +357,9 @@ public class VenueHireSystem {
             floralService.getServiceName(), Integer.toString(floralCost));
       }
     }
+
+    int totalCost =
+        Integer.parseInt(venueForBooking.getHireFee()) + bookingToViewInvoice.getServicesCost();
+    MessageCli.INVOICE_CONTENT_BOTTOM_HALF.printMessage(Integer.toString(totalCost));
   }
 }
