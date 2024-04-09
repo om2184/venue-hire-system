@@ -9,7 +9,7 @@ public class CateringService extends Service {
   public CateringService(String bookingReference, CateringType cateringType) {
     super(cateringType.getName(), bookingReference, cateringType.getCostPerPerson());
     MessageCli.ADD_SERVICE_SUCCESSFUL.printMessage(
-        "Catering (" + cateringName + ")", bookingReference);
+        "Catering (" + cateringType.getName() + ")", bookingReference);
   }
 
   @Override
