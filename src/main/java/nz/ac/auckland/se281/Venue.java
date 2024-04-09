@@ -59,14 +59,9 @@ public class Venue {
     return newBooking;
   }
 
-  // Update the next available date for this venue
   public void updateNextAvailableDate(String systemDate) {
-    this.nextAvailableDate = systemDate;
-  }
-
-  public void updateNextAvailableDate() {
     // Get the next available date for this venue
-    String[] dateParts = nextAvailableDate.split("/");
+    String[] dateParts = systemDate.split("/");
     int day = Integer.parseInt(dateParts[0]);
     int month = Integer.parseInt(dateParts[1]);
     int year = Integer.parseInt(dateParts[2]);
