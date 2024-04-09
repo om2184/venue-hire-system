@@ -10,7 +10,7 @@ public class CateringService extends Service {
         "Catering (" + serviceName + ")", bookingReference);
   }
 
-  // Calculate the cost of the catering service based on the number of attendees
+  // calculate the cost of the catering service based on the number of attendees
   @Override
   public int calculateCost(int attendees) {
     int totalCost = attendees * this.serviceCost;

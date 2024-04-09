@@ -22,13 +22,13 @@ public class Booking {
       String dateOfBooking) {
     this.venueName = venueName;
     this.venueCode = venueCode;
-    this.dateOfBooking = dateOfBooking; // Date of booking is the current system date
-    this.dateBookedFor = dateBookedFor; // Date the booking is made for
+    this.dateOfBooking = dateOfBooking; // date of booking is the current system date
+    this.dateBookedFor = dateBookedFor; // date the booking is made for
     this.email = email;
     this.attendees = attendees;
     this.bookingReference = BookingReferenceGenerator.generateBookingReference();
 
-    // Print the booking confirmation message
+    // print the booking confirmation message
     MessageCli.MAKE_BOOKING_SUCCESSFUL.printMessage(
         this.bookingReference, this.venueName, this.dateBookedFor, this.attendees);
   }
