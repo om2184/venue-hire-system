@@ -336,22 +336,26 @@ public class VenueHireSystem {
     // print venue fee
     MessageCli.INVOICE_CONTENT_VENUE_FEE.printMessage(venueForBooking.getHireFee());
 
+    int cateringCost = 0;
+    int musicCost = 0;
+    int floralCost = 0;
+
     ArrayList<Service> services = bookingToViewInvoice.getServices();
     for (Service service : services) {
       if (service instanceof CateringService) {
         CateringService cateringService = (CateringService) service;
-        int cateringCost =
+        cateringCost =
             cateringService.calculateCost(Integer.parseInt(bookingToViewInvoice.getAttendees()));
         MessageCli.INVOICE_CONTENT_CATERING_ENTRY.printMessage(
             cateringService.getServiceName(), Integer.toString(cateringCost));
       } else if (service instanceof MusicService) {
         MusicService musicService = (MusicService) service;
-        int musicCost =
+        musicCost =
             musicService.calculateCost(Integer.parseInt(bookingToViewInvoice.getAttendees()));
         MessageCli.INVOICE_CONTENT_MUSIC_ENTRY.printMessage(Integer.toString(musicCost));
       } else if (service instanceof FloralService) {
         FloralService floralService = (FloralService) service;
-        int floralCost =
+        floralCost =
             floralService.calculateCost(Integer.parseInt(bookingToViewInvoice.getAttendees()));
         MessageCli.INVOICE_CONTENT_FLORAL_ENTRY.printMessage(
             floralService.getServiceName(), Integer.toString(floralCost));
@@ -359,7 +363,7 @@ public class VenueHireSystem {
     }
 
     int totalCost =
-        Integer.parseInt(venueForBooking.getHireFee()) + bookingToViewInvoice.getServicesCost();
+        Integer.parseInt(venueForBooking.getHireFee()) + cateringCost + musicCost + floralCost;
     MessageCli.INVOICE_CONTENT_BOTTOM_HALF.printMessage(Integer.toString(totalCost));
   }
 }
