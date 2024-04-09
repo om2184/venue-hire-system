@@ -278,6 +278,9 @@ public class VenueHireSystem {
       MessageCli.SERVICE_NOT_ADDED_BOOKING_NOT_FOUND.printMessage("Music", bookingReference);
       return;
     }
+
+    Service musicService = new musicService(bookingReference);
+    bookingToAddMusic.addService(musicService);
   }
 
   public void addServiceFloral(String bookingReference, FloralType floralType) {
