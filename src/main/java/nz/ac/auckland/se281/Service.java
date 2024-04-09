@@ -8,4 +8,9 @@ public abstract class Service {
   }
 
   public abstract void addService();
+
+  @Override
+  public String toString() {
+    return "Service{" + "bookingReference='" + bookingReference + '\'' + '}';
+  }
 }

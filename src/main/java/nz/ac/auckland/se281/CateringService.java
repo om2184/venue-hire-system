@@ -3,27 +3,23 @@ package nz.ac.auckland.se281;
 import nz.ac.auckland.se281.Types.CateringType;
 
 public class CateringService extends Service {
-  private CateringType cateringType;
-  private String cateringDescription;
-  private String cateringCost;
+  private String cateringName;
+  private int cateringCostPerPerson;
 
   public CateringService(String bookingReference, CateringType cateringType) {
     super(bookingReference);
-    this.cateringType = cateringType;
-    this.cateringDescription = cateringDescription;
-    this.cateringCost = cateringCost;
+    this.cateringName = cateringType.getName();
+    this.cateringCostPerPerson = cateringType.getCostPerPerson();
+    MessageCli.ADD_SERVICE_SUCCESSFUL.printMessage(
+        "Catering (" + cateringName + ")", bookingReference);
   }
 
-  public CateringType getCateringType() {
-    return cateringType;
+  public String getCateringName() {
+    return cateringName;
   }
 
-  public String getCateringDescription() {
-    return cateringDescription;
-  }
-
-  public String getCateringCost() {
-    return cateringCost;
+  public int getCateringCost() {
+    return cateringCostPerPerson;
   }
 
   @Override

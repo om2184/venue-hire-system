@@ -260,6 +260,8 @@ public class VenueHireSystem {
       MessageCli.SERVICE_NOT_ADDED_BOOKING_NOT_FOUND.printMessage("Catering", bookingReference);
       return;
     }
+
+    Service cateringService = new CateringService(bookingReference, cateringType);
   }
 
   public void addServiceMusic(String bookingReference) {
