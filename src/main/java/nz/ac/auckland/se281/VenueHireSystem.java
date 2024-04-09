@@ -129,9 +129,7 @@ public class VenueHireSystem {
 
     // Update the next available date for each venue
     for (Venue venue : venuesList) {
-      {
-        venue.updateNextAvailableDate(systemDate);
-      }
+      venue.updateNextAvailableDate(systemDate);
     }
   }
 
