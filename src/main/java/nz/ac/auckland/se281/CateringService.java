@@ -12,7 +12,8 @@ public class CateringService extends Service {
 
   @Override
   public int calculateCost(int attendees) {
-    int totalCost = attendees * serviceCost;
-    return totalCost;
+    int totalCost = attendees * this.serviceCost;
+    this.serviceCost = totalCost;
+    return serviceCost;
   }
 }

@@ -302,6 +302,17 @@ public class VenueHireSystem {
   }
 
   public void viewInvoice(String bookingReference) {
-    // TODO implement this method
+    // check if booking reference exists
+    Booking bookingToViewInvoice = null;
+    for (Booking booking : bookingsList) {
+      if (booking.getBookingReference().equals(bookingReference)) {
+        bookingToViewInvoice = booking;
+        break;
+      }
+    }
+    if (bookingToViewInvoice == null) {
+      MessageCli.VIEW_INVOICE_BOOKING_NOT_FOUND.printMessage(bookingReference);
+      return;
+    }
   }
 }

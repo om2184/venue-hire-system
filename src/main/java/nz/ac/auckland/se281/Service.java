@@ -10,4 +10,12 @@ public abstract class Service {
   }
 
   public abstract int calculateCost(int attendees);
+
+  public String getServiceName() {
+    return serviceName;
+  }
+
+  public int getServiceCost() {
+    return serviceCost;
+  }
 }

@@ -9,6 +9,6 @@ public class MusicService extends Service {
 
   @Override
   public int calculateCost(int attendees) {
-    return 500;
+    return serviceCost;
   }
 }
