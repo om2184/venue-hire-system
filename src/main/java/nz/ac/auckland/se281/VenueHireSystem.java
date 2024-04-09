@@ -279,7 +279,7 @@ public class VenueHireSystem {
       return;
     }
 
-    Service musicService = new musicService(bookingReference);
+    Service musicService = new MusicService(bookingReference);
     bookingToAddMusic.addService(musicService);
   }
 
@@ -296,6 +296,9 @@ public class VenueHireSystem {
       MessageCli.SERVICE_NOT_ADDED_BOOKING_NOT_FOUND.printMessage("Floral", bookingReference);
       return;
     }
+
+    Service floralService = new FloralService(bookingReference, floralType);
+    bookingToAddFloral.addService(floralService);
   }
 
   public void viewInvoice(String bookingReference) {
