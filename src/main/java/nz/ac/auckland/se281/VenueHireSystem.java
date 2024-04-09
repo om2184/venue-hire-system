@@ -262,6 +262,7 @@ public class VenueHireSystem {
     }
 
     Service cateringService = new CateringService(bookingReference, cateringType);
+    bookingToAddCatering.addService(cateringService);
   }
 
   public void addServiceMusic(String bookingReference) {

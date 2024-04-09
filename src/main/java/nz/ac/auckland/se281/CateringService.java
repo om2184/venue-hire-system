@@ -7,24 +7,14 @@ public class CateringService extends Service {
   private int cateringCostPerPerson;
 
   public CateringService(String bookingReference, CateringType cateringType) {
-    super(bookingReference);
-    this.cateringName = cateringType.getName();
-    this.cateringCostPerPerson = cateringType.getCostPerPerson();
+    super(cateringType.getName(), bookingReference, cateringType.getCostPerPerson());
     MessageCli.ADD_SERVICE_SUCCESSFUL.printMessage(
         "Catering (" + cateringName + ")", bookingReference);
   }
 
-  public String getCateringName() {
-    return cateringName;
-  }
-
-  public int getCateringCost() {
-    return cateringCostPerPerson;
-  }
-
   @Override
-  public void addService() {
-    // Add the catering service to the booking
-    return;
+  public int calculateCost() {
+    // TODO Auto-generated method stub
+    throw new UnsupportedOperationException("Unimplemented method 'calculateCost'");
   }
 }
