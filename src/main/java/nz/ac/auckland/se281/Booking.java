@@ -7,21 +7,28 @@ public class Booking {
   private String venueName;
   private String venueCode;
   private String dateOfBooking;
-  private String date;
+  private String partyDate;
   private String email;
   private String attendees;
   private String bookingReference;
   private ArrayList<Service> services = new ArrayList<>();
 
-  public Booking(String venueName, String venueCode, String date, String email, String attendees) {
+  public Booking(
+      String venueName,
+      String venueCode,
+      String date,
+      String email,
+      String attendees,
+      String dateOfBooking) {
     this.venueName = venueName;
     this.venueCode = venueCode;
-    this.date = date;
+    this.dateOfBooking = dateOfBooking;
+    this.partyDate = date;
     this.email = email;
     this.attendees = attendees;
     this.bookingReference = BookingReferenceGenerator.generateBookingReference();
     MessageCli.MAKE_BOOKING_SUCCESSFUL.printMessage(
-        this.bookingReference, this.venueName, this.date, this.attendees);
+        this.bookingReference, this.venueName, this.partyDate, this.attendees);
   }
 
   public String getVenueName() {
@@ -32,8 +39,12 @@ public class Booking {
     return venueCode;
   }
 
-  public String getDate() {
-    return date;
+  public String getDateOfBooking() {
+    return dateOfBooking;
+  }
+
+  public String getPartyDate() {
+    return partyDate;
   }
 
   public String getEmail() {

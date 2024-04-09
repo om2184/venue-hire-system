@@ -53,8 +53,9 @@ public class Venue {
   }
 
   // Make a booking for this venue
-  public Booking makeBooking(String date, String email, String attendees) {
-    Booking newBooking = new Booking(this.venueName, this.venueCode, date, email, attendees);
+  public Booking makeBooking(String date, String email, String attendees, String systemDate) {
+    Booking newBooking =
+        new Booking(this.venueName, this.venueCode, date, email, attendees, systemDate);
     this.bookingsList.add(date); // Add the booking date to the list of bookings
     return newBooking;
   }
