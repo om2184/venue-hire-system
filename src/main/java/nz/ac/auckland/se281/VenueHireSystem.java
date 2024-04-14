@@ -206,6 +206,7 @@ public class VenueHireSystem {
           options[3], venueToBook.getCapacity(), venueToBook.getCapacity());
       options[3] = venueToBook.getCapacity();
     }
+
     // if there are too few attendees, adjust the number
     else if (attendees < 1) {
       MessageCli.BOOKING_ATTENDEES_ADJUSTED.printMessage(
@@ -249,7 +250,7 @@ public class VenueHireSystem {
     boolean hasBookings = false;
     for (Booking booking : bookingsList) {
       if (booking.getVenueCode().equals(venueCode)) {
-        MessageCli.PRINT_BOOKINGS_ENTRY.printMessage( // booking for venue found
+        MessageCli.PRINT_BOOKINGS_ENTRY.printMessage(
             booking.getBookingReference(), booking.getDateBookedFor());
         hasBookings = true;
       }
